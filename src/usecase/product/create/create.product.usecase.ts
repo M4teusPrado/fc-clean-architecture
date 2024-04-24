@@ -5,7 +5,6 @@ import { InputCreateProductDto, OutputCreateProductDto } from "./create.product.
 
 export default class CreateProducUseCase {
 
-
     private productRepository: ProductRepository;
 
     constructor(productRepository: ProductRepository) {
@@ -14,14 +13,13 @@ export default class CreateProducUseCase {
     
     async execute(input: InputCreateProductDto): Promise<OutputCreateProductDto> {
         const product = ProductFactory.create(
-            input.type,
             input.name,
             input.price
         );
 
-        const productIntanciated = new Product(product.id, product.name, product.price);
+//        const productIntanciated = new Product(product.id, product.name, product.price);
 
-        await this.productRepository.create(productIntanciated);
+        await this.productRepository.create(product);
 
         return {
             id: product.id,

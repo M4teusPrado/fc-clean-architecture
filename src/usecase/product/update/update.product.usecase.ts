@@ -6,6 +6,8 @@ import { InputUpdateProductDto, OutputUpdateProductDto } from "./update.product.
 export default class UpdateProductUseCase {
     private productRepository: ProductRepositoryInterface;
 
+    
+
     constructor(productRepository: ProductRepositoryInterface){
         this.productRepository = productRepository;
     }
