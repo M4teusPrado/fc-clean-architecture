@@ -1,13 +1,14 @@
 import Product from "../../../domain/product/entity/product";
 import ProductFactory from "../../../domain/product/factory/product.factory";
+import ProductRepositoryInterface from "../../../domain/product/repository/product-repository.interface";
 import ProductRepository from "../../../infrastructure/product/repository/sequelize/product.repository";
 import { InputCreateProductDto, OutputCreateProductDto } from "./create.product.dto";
 
 export default class CreateProducUseCase {
 
-    private productRepository: ProductRepository;
+    private productRepository: ProductRepositoryInterface;
 
-    constructor(productRepository: ProductRepository) {
+    constructor(productRepository: ProductRepositoryInterface) {
         this.productRepository = productRepository;
     }
     
@@ -16,8 +17,6 @@ export default class CreateProducUseCase {
             input.name,
             input.price
         );
-
-//        const productIntanciated = new Product(product.id, product.name, product.price);
 
         await this.productRepository.create(product);
 

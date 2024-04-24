@@ -20,6 +20,7 @@ describe("Test update product use case", () => {
         sync: { force: true },
       });
   
+      await sequelize.addModels([ProductModel]);
       await sequelize.sync();
     });
   
@@ -50,7 +51,7 @@ describe("Test update product use case", () => {
         const result = await usecase.execute(input);
 
         expect(result).toEqual(output);
-
+        
 
     });
 
